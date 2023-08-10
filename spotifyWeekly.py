@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['SESSION_COOKIE_NAME'] = 'Spotify Cookie'
 
 # set a random secret key to sign the cookie
-app.secret_key = 'ijdgiosd92890iohfwes0iiofho'
+app.secret_key = 'key in here'
 
 # set the key for the token info in the session dictionary
 TOKEN_INFO = 'token_info'
@@ -74,7 +74,7 @@ def save_discover_weekly():
         song_uris.append(song_uri)
     
     # add the tracks to the Saved Weekly playlist
-    sp.user_playlist_add_tracks("31ysvtchvmyqume2sxsqzhdgoydm", saved_weekly_playlist_id, song_uris, None)
+    sp.user_playlist_add_tracks("playlistId", saved_weekly_playlist_id, song_uris, None)
 
     # return a success message
     return ('Discover Weekly songs added successfully')
@@ -98,8 +98,8 @@ def get_token():
 
 def create_spotify_oauth():
     return SpotifyOAuth(
-        client_id = '90cae9b9d1914f3a8a5414cea27134f7',
-        client_secret = '326d1c766fbe4705af7a640b4734fc64',
+        client_id = 'id',
+        client_secret = 'secret',
         redirect_uri = url_for('redirect_page', _external=True),
         scope='user-library-read playlist-modify-public playlist-modify-private'
     )
